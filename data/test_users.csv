@@ -1,0 +1,5 @@
+# Test data for automation testing
+email,password,name
+test1@example.com,password123,Test User 1
+test2@example.com,password456,Test User 2
+test3@example.com,password789,Test User 3

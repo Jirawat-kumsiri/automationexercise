@@ -205,3 +205,22 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Robot Framework
+results/
+reports/
+logs/
+output.xml
+log.html
+report.html
+pabot_results/
+*.png
+*.jpg
+*.jpeg
+downloads/
+selenium-screenshot-*.png
+
+# Test artifacts
+geckodriver.log
+chromedriver.log
+.pabotsuitenames

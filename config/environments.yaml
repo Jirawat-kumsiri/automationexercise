@@ -1,0 +1,32 @@
+environments:
+  dev:
+    base_url: "https://automationexercise.com"
+    api_url: "https://automationexercise.com"
+    browser: "chrome"
+    timeout: 10
+    
+  staging:
+    base_url: "https://staging.automationexercise.com"
+    api_url: "https://staging.automationexercise.com"
+    browser: "chrome"
+    timeout: 15
+    
+  prod:
+    base_url: "https://automationexercise.com"
+    api_url: "https://automationexercise.com"
+    browser: "chrome"
+    timeout: 20
+
+# Default environment
+default_environment: "dev"
+
+# Robot Framework settings
+robot:
+  output_dir: "results"
+  log_level: "INFO"
+  
+# Browser settings
+browser:
+  headless: false
+  window_size: "1920x1080"
+  download_dir: "downloads"

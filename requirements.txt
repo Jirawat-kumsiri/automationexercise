@@ -1,0 +1,25 @@
+# Robot Framework Core
+robotframework>=7.0
+
+# Web Testing Libraries
+robotframework-seleniumlibrary>=6.0.0
+robotframework-browser>=18.0.0
+
+# API Testing Libraries
+robotframework-requests>=0.9.7
+robotframework-jsonlibrary>=0.5
+
+# Database Testing
+robotframework-databaselibrary>=1.2.4
+
+# Additional Useful Libraries
+robotframework-faker>=5.0.0
+robotframework-datetime-tz>=1.0.6
+robotframework-csvlibrary>=3.0.0
+
+# Development and Reporting
+robotframework-pabot>=2.16.0
+robotframework-metrics>=3.4.0
+
+# Web Drivers (for Selenium)
+webdriver-manager>=4.0.0

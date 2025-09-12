@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "name": "Test User 1",
+      "email": "test1@example.com",
+      "password": "password123",
+      "address": "123 Test Street",
+      "city": "Test City",
+      "state": "Test State",
+      "zipcode": "12345",
+      "country": "Test Country"
+    },
+    {
+      "name": "Test User 2", 
+      "email": "test2@example.com",
+      "password": "password456",
+      "address": "456 Demo Avenue",
+      "city": "Demo City",
+      "state": "Demo State", 
+      "zipcode": "67890",
+      "country": "Demo Country"
+    }
+  ],
+  "products": [
+    {
+      "name": "Blue Top",
+      "price": "Rs. 500",
+      "category": "Women > Tops"
+    },
+    {
+      "name": "Men Tshirt",
+      "price": "Rs. 400", 
+      "category": "Men > Tshirts"
+    }
+  ]
+}
