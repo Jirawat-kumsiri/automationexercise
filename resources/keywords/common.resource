@@ -39,11 +39,15 @@ Generate Profile
     ...    first_name=${first_name}
     ...    last_name=${last_name}
     ...    country=${country}
+    ...    state=${environments['default']['state']}
+    ...    city=${environments['default']['city']}
+    ...    zipcode=${environments['default']['zipcode']}
+    ...    mobile_number=${environments['default']['mobile_number']}
 
     IF    '${gender}' == 'M'
-        Collections.Set To Dictionary    dictionary=${profile}    title_type=1
+        Collections.Set To Dictionary    dictionary=${profile}    title_type=1    title=Mr
     ELSE
-        Collections.Set To Dictionary    dictionary=${profile}    title_type=2
+        Collections.Set To Dictionary    dictionary=${profile}    title_type=2    title=Mrs
     END
     RETURN    ${profile}
 
