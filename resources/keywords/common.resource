@@ -35,7 +35,7 @@ Generate Profile
     ${first_name}    ${last_name}    String.Split String    ${profile['name']}    separator=${SPACE}
     ${country}    FakerLibrary.Country
     Collections.Set To Dictionary    dictionary=${profile}    
-    ...    password=Password123!
+    ...    password=${environments['default']['password']}
     ...    first_name=${first_name}
     ...    last_name=${last_name}
     ...    country=${country}

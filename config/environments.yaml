@@ -2,6 +2,7 @@ environments:
   default:
     url: https://automationexercise.com/
     browser: chrome
+    password: Password123!
     country: United States
     state: California
     city: San Diego
