@@ -1,11 +1,11 @@
 *** Settings ***
-Library    SeleniumLibrary
-Library    FakerLibrary
-Library    Collections
-Library    String
-Library    DateTime
+Library         SeleniumLibrary
+Library         FakerLibrary
+Library         Collections
+Library         String
+Library         DateTime
+Variables       ../../config/environments.yaml
 
-Variables    ../../config/environments.yaml
 
 *** Keywords ***
 Open Browser To URL
@@ -34,7 +34,7 @@ Generate Profile
     ${profile}    FakerLibrary.Simple Profile    sex=${gender}
     ${first_name}    ${last_name}    String.Split String    ${profile['name']}    separator=${SPACE}
     ${country}    FakerLibrary.Country
-    Collections.Set To Dictionary    dictionary=${profile}    
+    Collections.Set To Dictionary    dictionary=${profile}
     ...    password=${environments['default']['password']}
     ...    first_name=${first_name}
     ...    last_name=${last_name}
@@ -55,6 +55,6 @@ Get Day Month Year From Date
     [Documentation]    Extract day, month, and year from a given date. datetime.date(2025, 3, 12)
     [Arguments]    ${date}
     ${year}    Evaluate    str(${date.year})
-    ${month}   Evaluate    str(${date.month})
-    ${day}     Evaluate    str(${date.day})
+    ${month}    Evaluate    str(${date.month})
+    ${day}    Evaluate    str(${date.day})
     RETURN    ${day}    ${month}    ${year}

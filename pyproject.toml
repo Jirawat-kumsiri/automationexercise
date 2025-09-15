@@ -10,4 +10,5 @@ dependencies = [
     "robotframework-faker>=6.0.0",
     "robotframework-requests>=0.9.7",
     "robotframework-seleniumlibrary>=6.7.1",
+    "robotframework-tidy>=4.18.0",
 ]
