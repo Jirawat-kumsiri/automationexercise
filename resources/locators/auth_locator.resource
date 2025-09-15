@@ -22,3 +22,6 @@ ${auth.link_continue_button}    xpath=//a[@data-qa="continue-button"]
 ${auth.link_logged_in_user}     xpath=//i[contains(@class, 'fa-user')]/parent::a
 ${auth.link_delete_account}     xpath=//i[contains(@class,'fa-trash-o')]/parent::a
 ${auth.txt_account_deleted}     xpath=//h2[@data-qa="account-deleted"]
+${auth.input_login_email}       xpath=//input[@data-qa='login-email']
+${auth.input_login_password}    xpath=//input[@data-qa='login-password']
+${auth.button_login}            xpath=//button[@data-qa='login-button']
