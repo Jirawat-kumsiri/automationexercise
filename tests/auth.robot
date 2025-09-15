@@ -2,6 +2,7 @@
 Resource    ../resources/keywords/common.resource
 Resource    ../resources/keywords/auth.resource
 
+
 *** Test Cases ***
 Register User
     [Documentation]    Test user registration functionality
