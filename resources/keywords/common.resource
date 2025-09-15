@@ -1,9 +1,9 @@
 *** Settings ***
+Library         DateTime
 Library         SeleniumLibrary
 Library         FakerLibrary
 Library         Collections
 Library         String
-Library         DateTime
 Variables       ../../config/environments.yaml
 
 

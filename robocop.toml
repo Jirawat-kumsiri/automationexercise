@@ -1,0 +1,27 @@
+[tool.robocop.lint]
+select = [
+    "not-capitalized-test-case-title",
+    "missing-trailing-blank-line",
+    "empty-lines-between-test-cases",
+    "empty-lines-between-keywords",
+    "too-many-trailing-blank-lines",
+    "suite-setting-should-be-left-aligned",
+    "bad-block-indent",
+    "unreachable-code",
+    "unused-argument",
+    "misplaced-negative-condition",
+    "tag-already-set-in-test-tags",
+    "duplicated-tags",
+    "parsing-error",
+    "return-in-test-case",
+    "hyphen-in-variable-name",
+    "overwriting-reserved-variable",
+    "wrong-case-in-keyword-name",
+    "inconsistent-assignment",
+    "line-too-long:line_length=140",
+    "empty-lines-between-sections:empty_lines=1",
+    "missing-doc-test-case:ignore_templated=True",
+    "wrong-case-in-keyword-name:convention=title_case"
+]
+
+reports = ["all", "sarif"]
