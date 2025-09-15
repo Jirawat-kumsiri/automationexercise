@@ -20,8 +20,8 @@ Create User
     ...    firstname=${user['first_name']}
     ...    lastname=${user['last_name']}
     ...    address1=${user['address']}
-    ...    address2=
-    ...    company=
+    ...    address2=${EMPTY}
+    ...    company=${EMPTY}
     ...    country=${user['country']}
     ...    zipcode=${user['zipcode']}
     ...    state=${user['state']}
@@ -61,8 +61,8 @@ Update User
     ...    firstname=${user['first_name']}
     ...    lastname=${user['last_name']}
     ...    address1=${user['address']}
-    ...    address2=
-    ...    company=
+    ...    address2=${EMPTY}
+    ...    company=${EMPTY}
     ...    country=${user['country']}
     ...    zipcode=${user['zipcode']}
     ...    state=${user['state']}
