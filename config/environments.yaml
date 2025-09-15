@@ -1,0 +1,10 @@
+environments:
+  default:
+    url: https://automationexercise.com/
+    browser: chrome
+    password: Password123!
+    country: United States
+    state: California
+    city: San Diego
+    zipcode: 92101
+    mobile_number: +1234567890
