@@ -14,3 +14,11 @@ Verify All Products and product detail page
     catalog.Click On First Product View Button
     catalog.Verify Product Detail Page Displayed
     catalog.Verify Product Detail Page    ${product_name}
+
+Search Product
+    [Documentation]    Test to verify that product search functionality is working
+    common.Navigate To Products Page
+    ${product_name}    catalog.Get First Product Name
+    catalog.Search Product    ${product_name}
+    catalog.Verify All Products Visible
+    catalog.Verify Product Displayed In Search Results   ${product_name}
