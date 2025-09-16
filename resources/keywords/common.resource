@@ -5,6 +5,10 @@ Library         FakerLibrary
 Library         Collections
 Library         String
 Variables       ../../config/environments.yaml
+Resource        ../locators/common_locator.resource
+Resource        ../locators/auth_locator.resource
+Resource        ../locators/catalog_locator.resource
+Resource        ./auth.resource
 
 
 *** Keywords ***
@@ -15,9 +19,28 @@ Open Browser To URL
     SeleniumLibrary.Set Selenium Speed    0.2s
 
 Find And Click Element
-    [Arguments]    ${locator}
+    [Arguments]    ${locator}    ${max_attemps}=3
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    timeout=10s
-    SeleniumLibrary.Click Element    ${locator}
+    ${status}    ${err_msg}    Run Keyword And Ignore Error    SeleniumLibrary.Click Element    ${locator}
+    
+    IF    '${status}' == 'FAIL'
+        ${intercept}    Evaluate    'ElementClickInterceptedException' in $err_msg
+        IF    ${intercept}
+            common.Handle Click Intercepted    ${locator}    ${max_attemps}
+        END
+    END
+
+Handle Click Intercepted
+    [Arguments]    ${locator}    ${max_attempts}=3
+    SeleniumLibrary.Scroll Element Into View    ${locator}
+    FOR    ${index}    IN RANGE    ${max_attempts}
+        SeleniumLibrary.Execute Javascript    window.scrollBy(0, 100);
+        ${status}    ${err_msg}    Run Keyword And Ignore Error    SeleniumLibrary.Click Element    ${locator}
+        IF    '${status}' == 'PASS'
+            RETURN
+        END
+    END
+    Fail    Click action could not be completed after ${max_attempts} attempts.
 
 Find And Input Text
     [Arguments]    ${locator}    ${text}
@@ -58,3 +81,11 @@ Get Day Month Year From Date
     ${month}    Evaluate    str(${date.month})
     ${day}    Evaluate    str(${date.day})
     RETURN    ${day}    ${month}    ${year}
+
+Navigate To Products Page
+    common.Find And Click Element    ${common.link_products}
+    SeleniumLibrary.Page Should Contain Element    ${catalog.txt_all_products}    timeout=10s
+
+Navigate To Login Page
+    common.Find And Click Element    ${common.link_login}
+    auth.Verify Login Page Displayed

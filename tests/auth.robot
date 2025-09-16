@@ -4,7 +4,7 @@ Resource    ../resources/keywords/auth.resource
 Resource    ../resources/keywords/api.resource
 
 Test Setup    Run Keywords    common.Open Browser To URL    
-...                    AND    auth.Navigate To Login Page
+...                    AND    common.Navigate To Login Page
 
 *** Test Cases ***
 Register User
