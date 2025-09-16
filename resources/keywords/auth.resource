@@ -52,3 +52,7 @@ Login User
 
 Navigate To Login Page
     common.Find And Click Element    xpath=//a[@href='/login']
+
+Verify Login Failed
+    SeleniumLibrary.Wait Until Element Is Visible    xpath=//p[contains(text(),'Your email or password is incorrect!')]    timeout=10s
+    SeleniumLibrary.Element Should Be Visible    xpath=//p[contains(text(),'Your email or password is incorrect!')]
