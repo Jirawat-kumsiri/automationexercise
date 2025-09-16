@@ -10,7 +10,8 @@ Test Setup    Run Keywords    common.Open Browser To URL
 Register User
     [Documentation]    Test user registration functionality
     ${user}    common.Generate Profile
-    auth.Register New User    ${user}
+    auth.Signup New User    ${user['name']}    ${user['mail']}
+    auth.Fill Registration Form And Submit    ${user}
     auth.Verify Account Created
     auth.Verify Logged In As Username    ${user}
     auth.Delete Account
@@ -37,4 +38,12 @@ Logout User
     auth.Verify Logged In As Username    ${user}
     auth.Click Logout
     auth.Verify Login Page Displayed
+    [Teardown]    api.Delete User    ${user}
+
+Register User with existing email
+    [Documentation]    Test user registration with an already registered email
+    ${user}    common.Generate Profile
+    api.Create User    ${user}
+    auth.Signup New User    ${user['name']}    ${user['mail']}
+    auth.Verify Registration Failed Due To Existing Email
     [Teardown]    api.Delete User    ${user}
