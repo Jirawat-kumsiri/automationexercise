@@ -1,6 +1,7 @@
 *** Settings ***
 Resource    ./common.resource
 Resource    ../locators/auth_locator.resource
+Resource    ../locators/common_locator.resource
 
 
 *** Keywords ***
@@ -55,16 +56,16 @@ Login User
     common.Find And Click Element    ${auth.button_login}
 
 Navigate To Login Page
-    common.Find And Click Element    ${auth.link_login}
+    common.Find And Click Element    ${common.link_login}
 
 Verify Login Failed
-    SeleniumLibrary.Wait Until Element Is Visible    xpath=//p[contains(text(),'Your email or password is incorrect!')]    timeout=10s
-    SeleniumLibrary.Element Should Be Visible    xpath=//p[contains(text(),'Your email or password is incorrect!')]
+    SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_email_exists}    timeout=10s
+    SeleniumLibrary.Element Should Be Visible    ${auth.txt_email_exists}
 
 Click Logout
-    common.Find And Click Element    ${auth.link_logout}
-    SeleniumLibrary.Wait Until Element Is Visible   ${auth.link_login}    timeout=10s
-    SeleniumLibrary.Element Should Be Visible   ${auth.link_login}
+    common.Find And Click Element    ${common.link_logout}
+    SeleniumLibrary.Wait Until Element Is Visible   ${common.link_login}    timeout=10s
+    SeleniumLibrary.Element Should Be Visible   ${common.link_login}
 
 Verify Login Page Displayed
     SeleniumLibrary.Wait Until Element Is Visible   ${auth.input_login_email}    timeout=10s
