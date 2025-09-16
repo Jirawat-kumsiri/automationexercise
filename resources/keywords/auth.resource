@@ -4,12 +4,16 @@ Resource    ../locators/auth_locator.resource
 
 
 *** Keywords ***
-Register New User
+Signup New User
+    [Documentation]    Signup a new user with name and email
+    [Arguments]    ${name}    ${email}
+    common.Find And Input Text    ${auth.input_signup_name}    ${name}
+    common.Find And Input Text    ${auth.input_signup_email}   ${email}
+    common.Find And Click Element  ${auth.button_signup}
+
+Fill Registration Form And Submit
     [Documentation]    Register a new user with generated profile data
     [Arguments]    ${user}
-    common.Find And Input Text    ${auth.input_signup_name}    ${user['name']}
-    common.Find And Input Text    ${auth.input_signup_email}    ${user['mail']}
-    common.Find And Click Element    ${auth.button_signup}
     SeleniumLibrary.Wait Until Element Is Visible    ${auth.div_login_form}    timeout=10s
     ${gender_type_locator}    String.Replace String    ${auth.input_gender}    {{title_type}}    ${user['title_type']}
     common.Find And Click Element    ${gender_type_locator}
@@ -65,3 +69,7 @@ Click Logout
 Verify Login Page Displayed
     SeleniumLibrary.Wait Until Element Is Visible   ${auth.input_login_email}    timeout=10s
     SeleniumLibrary.Element Should Be Visible   ${auth.input_login_email}
+
+Verify Registration Failed Due To Existing Email
+    SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_email_exists}    timeout=10s
+    SeleniumLibrary.Element Should Be Visible    ${auth.txt_email_exists}
