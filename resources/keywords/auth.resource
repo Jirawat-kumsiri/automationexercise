@@ -55,9 +55,6 @@ Login User
     common.Find And Input Text    ${auth.input_login_password}    ${user['password']}
     common.Find And Click Element    ${auth.button_login}
 
-Navigate To Login Page
-    common.Find And Click Element    ${common.link_login}
-
 Verify Login Failed
     SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_email_exists}    timeout=10s
     SeleniumLibrary.Element Should Be Visible    ${auth.txt_email_exists}
