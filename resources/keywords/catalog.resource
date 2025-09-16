@@ -33,3 +33,20 @@ Verify Product Detail Page
     Page Should Contain    Availability:
     Page Should Contain    Condition:
     Page Should Contain    Brand:
+
+Search Product
+    [Documentation]    Search for a product using the search input and button
+    [Arguments]    ${product_name}
+    common.Find And Input Text    ${catalog.input_search}    ${product_name}
+    common.Find And Click Element    ${catalog.button_search}
+
+Verify Product Displayed In Search Results
+    [Documentation]    Verify that a specific product is displayed in the search results
+    [Arguments]    ${product_name}
+    ${displayed_product_names}    SeleniumLibrary.Get Webelements    ${catalog.txt_product_name}
+    ${product_name_list}    Create List
+    FOR    ${element}    IN    @{displayed_product_names}
+        ${name}    SeleniumLibrary.Get Text    ${element}
+        Append To List    ${product_name_list}    ${name}
+    END
+    Collections.List Should Contain Value    ${product_name_list}    ${product_name}
