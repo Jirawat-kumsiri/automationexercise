@@ -51,8 +51,17 @@ Login User
     common.Find And Click Element    ${auth.button_login}
 
 Navigate To Login Page
-    common.Find And Click Element    xpath=//a[@href='/login']
+    common.Find And Click Element    ${auth.link_login}
 
 Verify Login Failed
     SeleniumLibrary.Wait Until Element Is Visible    xpath=//p[contains(text(),'Your email or password is incorrect!')]    timeout=10s
     SeleniumLibrary.Element Should Be Visible    xpath=//p[contains(text(),'Your email or password is incorrect!')]
+
+Click Logout
+    common.Find And Click Element    ${auth.link_logout}
+    SeleniumLibrary.Wait Until Element Is Visible   ${auth.link_login}    timeout=10s
+    SeleniumLibrary.Element Should Be Visible   ${auth.link_login}
+
+Verify Login Page Displayed
+    SeleniumLibrary.Wait Until Element Is Visible   ${auth.input_login_email}    timeout=10s
+    SeleniumLibrary.Element Should Be Visible   ${auth.input_login_email}

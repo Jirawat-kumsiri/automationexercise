@@ -28,3 +28,13 @@ Login User with incorrect email and password
     ${invalid_user}    Create Dictionary    mail=invalid_email@test.com    password=wrongpassword
     auth.Login User    ${invalid_user}
     auth.Verify Login Failed
+
+Logout User
+    [Documentation]    Test user logout functionality
+    ${user}    common.Generate Profile
+    api.Create User    ${user}
+    auth.Login User    ${user}
+    auth.Verify Logged In As Username    ${user}
+    auth.Click Logout
+    auth.Verify Login Page Displayed
+    [Teardown]    api.Delete User    ${user}
