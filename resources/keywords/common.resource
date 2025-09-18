@@ -8,6 +8,7 @@ Variables       ../../config/environments.yaml
 Resource        ../locators/common_locator.resource
 Resource        ../locators/auth_locator.resource
 Resource        ../locators/catalog_locator.resource
+Resource        ../locators/subscribtion_locator.resource
 Resource        ./auth.resource
 
 
@@ -55,7 +56,7 @@ Find And Select From List By Value
 Generate Profile
     ${gender}    Evaluate    random.choice(["M","F"])    modules=random
     ${profile}    FakerLibrary.Simple Profile    sex=${gender}
-    ${first_name}    ${last_name}    String.Split String    ${profile['name']}    separator=${SPACE}
+    ${first_name}    ${last_name}    String.Split String    ${profile['name']}    separator=${SPACE}    max_split=1
     ${country}    FakerLibrary.Country
     Collections.Set To Dictionary    dictionary=${profile}
     ...    password=${environments['default']['password']}
@@ -89,3 +90,7 @@ Navigate To Products Page
 Navigate To Login Page
     common.Find And Click Element    ${common.link_login}
     auth.Verify Login Page Displayed
+
+Scroll To Footer
+    [Documentation]    Scroll to the footer section of the home page
+    SeleniumLibrary.Scroll Element Into View    ${common.footer}
