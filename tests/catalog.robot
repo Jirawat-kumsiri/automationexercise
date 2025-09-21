@@ -4,6 +4,7 @@ Resource    ../resources/keywords/catalog.resource
 Resource    ../resources/keywords/api.resource
 
 Test Setup    Run Keywords    common.Open Browser To URL
+Test Teardown    SeleniumLibrary.Close All Browsers
 
 *** Test Cases ***
 Verify All Products and product detail page

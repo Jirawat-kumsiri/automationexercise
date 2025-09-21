@@ -56,8 +56,8 @@ Login User
     common.Find And Click Element    ${auth.button_login}
 
 Verify Login Failed
-    SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_email_exists}    timeout=10s
-    SeleniumLibrary.Element Should Be Visible    ${auth.txt_email_exists}
+    SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_login_failed}    timeout=10s
+    SeleniumLibrary.Element Should Be Visible    ${auth.txt_login_failed}
 
 Click Logout
     common.Find And Click Element    ${common.link_logout}

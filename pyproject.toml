@@ -8,6 +8,7 @@ dependencies = [
     "pyyaml>=6.0.2",
     "robotframework==6.1.1",
     "robotframework-faker>=6.0.0",
+    "robotframework-metrics==3.7.0",
     "robotframework-requests>=0.9.7",
     "robotframework-robocop>=6.7.0",
     "robotframework-seleniumlibrary>=6.7.1",

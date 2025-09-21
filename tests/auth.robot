@@ -5,6 +5,7 @@ Resource    ../resources/keywords/api.resource
 
 Test Setup    Run Keywords    common.Open Browser To URL    
 ...                    AND    common.Navigate To Login Page
+Test Teardown    SeleniumLibrary.Close All Browsers
 
 *** Test Cases ***
 Register User

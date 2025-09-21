@@ -3,6 +3,7 @@ Resource    ../resources/keywords/common.resource
 Resource    ../resources/keywords/subscribtion.resource
 
 Test Setup    Run Keywords    common.Open Browser To URL 
+Test Teardown    SeleniumLibrary.Close All Browsers
 
 *** Test Cases ***
 Verify Subscription in home page
