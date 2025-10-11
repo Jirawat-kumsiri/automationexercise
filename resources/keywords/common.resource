@@ -16,14 +16,24 @@ Resource        ./auth.resource
 Open Browser To URL
     [Arguments]    ${url}=${environments['default']['url']}    ${browser}=${environments['default']['browser']}
     SeleniumLibrary.Open Browser    ${url}    ${browser}
+    SeleniumLibrary.Add Location Strategy    data-qa    Find By TestId
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Set Selenium Speed    0.2s
+
+Find By TestId
+    [Arguments]    ${browser}    ${criteria}    ${tag}=None    ${constraints}=None
+    Set Test Variable    ${browser}
+    Set Test Variable    ${tag}
+    Set Test Variable    ${constraints}
+    ${elements}    SeleniumLibrary.Execute Javascript
+    ...    return document.querySelectorAll(`[data-qa="${criteria}"]`);
+    RETURN    ${elements}
 
 Find And Click Element
     [Arguments]    ${locator}    ${max_attemps}=3
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    timeout=10s
     ${status}    ${err_msg}    Run Keyword And Ignore Error    SeleniumLibrary.Click Element    ${locator}
-    
+
     IF    '${status}' == 'FAIL'
         ${intercept}    Evaluate    'ElementClickInterceptedException' in $err_msg
         IF    ${intercept}
@@ -37,9 +47,7 @@ Handle Click Intercepted
     FOR    ${index}    IN RANGE    ${max_attempts}
         SeleniumLibrary.Execute Javascript    window.scrollBy(0, 100);
         ${status}    ${err_msg}    Run Keyword And Ignore Error    SeleniumLibrary.Click Element    ${locator}
-        IF    '${status}' == 'PASS'
-            RETURN
-        END
+        IF    '${status}' == 'PASS'    RETURN
     END
     Fail    Click action could not be completed after ${max_attempts} attempts.
 
