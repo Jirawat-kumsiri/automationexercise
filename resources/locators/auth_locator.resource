@@ -1,29 +1,29 @@
 *** Variables ***
-${auth.input_signup_name}       xpath=//input[@data-qa='signup-name']
-${auth.input_signup_email}      xpath=//input[@data-qa='signup-email']
-${auth.button_signup}           xpath=//button[@data-qa='signup-button']
+${auth.input_signup_name}       data-qa=signup-name
+${auth.input_signup_email}      data-qa=signup-email
+${auth.button_signup}           data-qa=signup-button
 ${auth.div_login_form}          xpath=//div[@class='login-form']
-${auth.input_gender}            xpath=//input[@id='id_gender{{title_type}}']
-${auth.input_password}          xpath=//input[@id='password']
-${auth.select_days}             xpath=//select[@data-qa="days"]
-${auth.select_months}           xpath=//select[@data-qa="months"]
-${auth.select_years}            xpath=//select[@data-qa="years"]
-${auth.input_first_name}        xpath=//input[@data-qa="first_name"]
-${auth.input_last_name}         xpath=//input[@data-qa="last_name"]
-${auth.input_address}           xpath=//input[@data-qa="address"]
-${auth.select_country}          xpath=//select[@data-qa="country"]
-${auth.input_state}             xpath=//input[@data-qa="state"]
-${auth.input_city}              xpath=//input[@data-qa="city"]
-${auth.input_zipcode}           xpath=//input[@data-qa="zipcode"]
-${auth.input_mobile}            xpath=//input[@data-qa="mobile_number"]
-${auth.button_create}           xpath=//button[@data-qa="create-account"]
-${auth.txt_account_created}     xpath=//h2[@data-qa="account-created"]
-${auth.link_continue_button}    xpath=//a[@data-qa="continue-button"]
+${auth.input_gender}            id=id_gender{{title_type}}
+${auth.input_password}          id=password
+${auth.select_days}             data-qa=days
+${auth.select_months}           data-qa=months
+${auth.select_years}            data-qa=years
+${auth.input_first_name}        data-qa=first_name
+${auth.input_last_name}         data-qa=last_name
+${auth.input_address}           data-qa=address
+${auth.select_country}          data-qa=country
+${auth.input_state}             data-qa=state
+${auth.input_city}              data-qa=city
+${auth.input_zipcode}           data-qa=zipcode
+${auth.input_mobile}            data-qa=mobile_number
+${auth.button_create}           data-qa=create-account
+${auth.txt_account_created}     data-qa=account-created
+${auth.link_continue_button}    data-qa=continue-button
 ${auth.link_logged_in_user}     xpath=//i[contains(@class, 'fa-user')]/parent::a
 ${auth.link_delete_account}     xpath=//i[contains(@class,'fa-trash-o')]/parent::a
-${auth.txt_account_deleted}     xpath=//h2[@data-qa="account-deleted"]
-${auth.input_login_email}       xpath=//input[@data-qa='login-email']
-${auth.input_login_password}    xpath=//input[@data-qa='login-password']
-${auth.button_login}            xpath=//button[@data-qa='login-button']
+${auth.txt_account_deleted}     data-qa=account-deleted
+${auth.input_login_email}       data-qa=login-email
+${auth.input_login_password}    data-qa=login-password
+${auth.button_login}            data-qa=login-button
 ${auth.txt_email_exists}        xpath=//p[contains(text(),'Email Address already exist!')]
 ${auth.txt_login_failed}        xpath=//p[contains(text(),'Your email or password is incorrect!')]

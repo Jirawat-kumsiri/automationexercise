@@ -16,8 +16,15 @@ Resource        ./auth.resource
 Open Browser To URL
     [Arguments]    ${url}=${environments['default']['url']}    ${browser}=${environments['default']['browser']}
     SeleniumLibrary.Open Browser    ${url}    ${browser}
+    SeleniumLibrary.Add Location Strategy    data-qa    Find By TestId
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Set Selenium Speed    0.2s
+
+Find By TestId
+    [Arguments]    ${browser}    ${criteria}    ${tag}=None    ${constraints}=None
+    ${elements}    SeleniumLibrary.Execute Javascript
+    ...    return document.querySelectorAll(`[data-qa="${criteria}"]`);
+    RETURN    ${elements}
 
 Find And Click Element
     [Arguments]    ${locator}    ${max_attemps}=3
