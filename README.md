@@ -61,12 +61,6 @@ automationexercise/
    pip install uv
    uv sync
    ```
-
-   Or using pip:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
 ## 🏃‍♂️ Running Tests
 
 ### Run All Tests
