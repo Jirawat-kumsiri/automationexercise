@@ -14,6 +14,7 @@ Resource        ./auth.resource
 
 *** Keywords ***
 Open Browser To URL
+    [Documentation]    Open browser to the specified URL with given browser type
     [Arguments]    ${url}=${environments['default']['url']}    ${browser}=${environments['default']['browser']}
     SeleniumLibrary.Open Browser    ${url}    ${browser}
     SeleniumLibrary.Add Location Strategy    data-qa    Find By TestId
@@ -21,6 +22,7 @@ Open Browser To URL
     SeleniumLibrary.Set Selenium Speed    0.2s
 
 Find By TestId
+    [Documentation]    Custom locator strategy to find elements by data-qa attribute
     [Arguments]    ${browser}    ${criteria}    ${tag}=None    ${constraints}=None
     Set Test Variable    ${browser}
     Set Test Variable    ${tag}
@@ -30,6 +32,7 @@ Find By TestId
     RETURN    ${elements}
 
 Find And Click Element
+    [Documentation]    Find an element by locator and click it, handling click interception if necessary
     [Arguments]    ${locator}    ${max_attemps}=3
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    timeout=10s
     ${status}    ${err_msg}    Run Keyword And Ignore Error    SeleniumLibrary.Click Element    ${locator}
@@ -42,6 +45,7 @@ Find And Click Element
     END
 
 Handle Click Intercepted
+    [Documentation]    Handle click interception by scrolling and retrying click action
     [Arguments]    ${locator}    ${max_attempts}=3
     SeleniumLibrary.Scroll Element Into View    ${locator}
     FOR    ${index}    IN RANGE    ${max_attempts}
@@ -52,16 +56,19 @@ Handle Click Intercepted
     Fail    Click action could not be completed after ${max_attempts} attempts.
 
 Find And Input Text
+    [Documentation]    Find an element by locator and input the specified text
     [Arguments]    ${locator}    ${text}
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    timeout=10s
     SeleniumLibrary.Input Text    ${locator}    ${text}
 
 Find And Select From List By Value
+    [Documentation]    Find a select element by locator and select an option by its value
     [Arguments]    ${locator}    ${value}
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    timeout=10s
     SeleniumLibrary.Select From List By Value    ${locator}    ${value}
 
 Generate Profile
+    [Documentation]    Generate a user profile with FakerLibrary and enrich it with additional data
     ${gender}    Evaluate    random.choice(["M","F"])    modules=random
     ${profile}    FakerLibrary.Simple Profile    sex=${gender}
     ${first_name}    ${last_name}    String.Split String    ${profile['name']}    separator=${SPACE}    max_split=1
@@ -92,10 +99,12 @@ Get Day Month Year From Date
     RETURN    ${day}    ${month}    ${year}
 
 Navigate To Products Page
+    [Documentation]    Navigate to the products page from the home page
     common.Find And Click Element    ${common.link_products}
     SeleniumLibrary.Page Should Contain Element    ${catalog.txt_all_products}    timeout=10s
 
 Navigate To Login Page
+    [Documentation]    Navigate to the login page from the home page
     common.Find And Click Element    ${common.link_login}
     auth.Verify Login Page Displayed
 

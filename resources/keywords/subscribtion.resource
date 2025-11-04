@@ -4,10 +4,6 @@ Resource    ../locators/common_locator.resource
 Resource    ./common.resource
 
 ***** Keywords ***
-Scroll To Footer
-    [Documentation]    Scroll to the footer section of the home page
-    SeleniumLibrary.Scroll Element Into View    ${subscribtion.footer}
-
 Verify Subscription Text Visible
     [Documentation]    Verify that the subscription section is visible in the footer
     SeleniumLibrary.Wait Until Element Is Visible    ${subscribtion.txt_subscription}    timeout=10s

@@ -34,40 +34,48 @@ Fill Registration Form And Submit
     common.Find And Click Element    ${auth.button_create}
 
 Verify Account Created
+    [Documentation]    Verify that the account creation was successful
     SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_account_created}    timeout=10s
     SeleniumLibrary.Element Should Be Visible    ${auth.txt_account_created}
     common.Find And Click Element    ${auth.link_continue_button}
 
 Verify Logged In As Username
+    [Documentation]    Verify that the logged in username is displayed correctly
     [Arguments]    ${user}
     SeleniumLibrary.Wait Until Element Is Visible    ${auth.link_logged_in_user}    timeout=10s
     ${logged_in_text}    SeleniumLibrary.Get Text    ${auth.link_logged_in_user}
     Should Contain    ${logged_in_text}    ${user['name']}
 
 Delete Account
+    [Documentation]    Delete the currently logged in user's account
     common.Find And Click Element    ${auth.link_delete_account}
     SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_account_deleted}    timeout=10s
     SeleniumLibrary.Element Should Be Visible    ${auth.txt_account_deleted}
 
 Login User
+    [Documentation]    Login a user with email and password
     [Arguments]    ${user}
     common.Find And Input Text    ${auth.input_login_email}       ${user['mail']}
     common.Find And Input Text    ${auth.input_login_password}    ${user['password']}
     common.Find And Click Element    ${auth.button_login}
 
 Verify Login Failed
+    [Documentation]    Verify that the login attempt failed
     SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_login_failed}    timeout=10s
     SeleniumLibrary.Element Should Be Visible    ${auth.txt_login_failed}
 
 Click Logout
+    [Documentation]    Click the logout link to log out the user
     common.Find And Click Element    ${common.link_logout}
     SeleniumLibrary.Wait Until Element Is Visible   ${common.link_login}    timeout=10s
     SeleniumLibrary.Element Should Be Visible   ${common.link_login}
 
 Verify Login Page Displayed
+    [Documentation]    Verify that the login page is displayed
     SeleniumLibrary.Wait Until Element Is Visible   ${auth.input_login_email}    timeout=10s
     SeleniumLibrary.Element Should Be Visible   ${auth.input_login_email}
 
 Verify Registration Failed Due To Existing Email
+    [Documentation]    Verify that the registration failed due to an existing email
     SeleniumLibrary.Wait Until Element Is Visible    ${auth.txt_email_exists}    timeout=10s
     SeleniumLibrary.Element Should Be Visible    ${auth.txt_email_exists}
